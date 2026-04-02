@@ -4,63 +4,130 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Royal Enfield Showroom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Unbounded:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
   </head>
   <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-rings" aria-hidden="true"></div>
+
     <header class="hero" id="home">
-      <nav class="nav">
-        <div class="brand">Royal Enfield Showroom</div>
+      <nav class="nav frame">
+        <a href="#home" class="brand">
+          <span class="brand-mark"></span>
+          Royal Enfield // Neo Garage
+        </a>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#models">Models</a></li>
-          <li><a href="#about">About</a></li>
+          <li><a href="#about">Why Us</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
-      <div class="hero-content">
-        <h1>Ride Pure Motorcycling</h1>
-        <p>
-          Explore legendary Royal Enfield motorcycles with timeless design and modern reliability.
-        </p>
-        <a href="#models" class="btn">View Models</a>
+      <div class="hero-layout">
+        <section class="hero-content frame reveal" data-reveal>
+          <p class="eyebrow">URBAN MOBILITY UNIT · 2026 EDITION</p>
+          <h1>Future-grade riding with legacy soul.</h1>
+          <p class="lead">
+            A redesigned Royal Enfield showroom experience with precision service, curated test routes,
+            and rider-first delivery support.
+          </p>
+          <div class="hero-actions">
+            <a href="#models" class="btn btn-solid">Explore Fleet</a>
+            <a href="#contact" class="btn btn-ghost">Book Test Ride</a>
+          </div>
+        </section>
+
+        <aside class="hero-panel frame reveal" data-reveal>
+          <p class="panel-label">Live showroom feed</p>
+          <dl>
+            <div>
+              <dt>On-floor models</dt>
+              <dd>21</dd>
+            </div>
+            <div>
+              <dt>Avg. delivery time</dt>
+              <dd>48 hrs</dd>
+            </div>
+            <div>
+              <dt>Test rides today</dt>
+              <dd>64</dd>
+            </div>
+          </dl>
+        </aside>
       </div>
     </header>
 
     <main>
       <section id="models" class="section">
-        <h2>Popular Models</h2>
+        <div class="section-head reveal" data-reveal>
+          <p class="eyebrow">Performance Catalog</p>
+          <h2>Popular Models</h2>
+        </div>
         <div class="card-grid">
-          <article class="card">
+          <article class="card reveal" data-reveal>
+            <p class="chip">Classic Series</p>
             <h3>Classic 350</h3>
-            <p>Retro charm, smooth ride, and iconic thump.</p>
+            <p>Retro contouring, balanced torque delivery, and signature long-ride comfort.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
+            <p class="chip">Metro Series</p>
             <h3>Hunter 350</h3>
-            <p>Agile city machine with youthful attitude.</p>
+            <p>Lightweight chassis and tight-turn handling tuned for dense city grids.</p>
           </article>
-          <article class="card">
+          <article class="card reveal" data-reveal>
+            <p class="chip">Cruise Series</p>
             <h3>Meteor 350</h3>
-            <p>Comfort-focused cruiser for long weekend rides.</p>
+            <p>Wide posture ergonomics, smooth highway pacing, and all-day rider stability.</p>
           </article>
         </div>
       </section>
 
       <section id="about" class="section alt">
-        <h2>Why Choose Us</h2>
+        <div class="section-head reveal" data-reveal>
+          <p class="eyebrow">Dealership Advantage</p>
+          <h2>Why Choose Us</h2>
+        </div>
         <ul class="features">
-          <li>Certified service support</li>
-          <li>Easy finance assistance</li>
-          <li>Test rides available every day</li>
+          <li class="reveal" data-reveal>
+            <span class="feature-index">01</span>
+            <div>
+              <h3>Certified Tech Cells</h3>
+              <p>Factory-trained diagnostics and preventive maintenance workflows.</p>
+            </div>
+          </li>
+          <li class="reveal" data-reveal>
+            <span class="feature-index">02</span>
+            <div>
+              <h3>Finance Concierge</h3>
+              <p>Fast-track approvals with transparent plans and guided onboarding.</p>
+            </div>
+          </li>
+          <li class="reveal" data-reveal>
+            <span class="feature-index">03</span>
+            <div>
+              <h3>Daily Test Ride Slots</h3>
+              <p>On-demand bookings with supervised urban and highway loops.</p>
+            </div>
+          </li>
         </ul>
       </section>
 
       <section id="contact" class="section">
-        <h2>Contact Us</h2>
+        <div class="section-head reveal" data-reveal>
+          <p class="eyebrow">Inquiry Console</p>
+          <h2>Contact Us</h2>
+        </div>
 
         {% with flashes = get_flashed_messages(with_categories=true) %}
           {% if flashes %}
-            <div class="flash-wrap">
+            <div class="flash-wrap reveal" data-reveal>
               {% for category, msg in flashes %}
                 <div class="flash {{ category }}">{{ msg }}</div>
               {% endfor %}
@@ -68,7 +135,7 @@
           {% endif %}
         {% endwith %}
 
-        <form action="{{ url_for('contact') }}" method="post" id="contactForm">
+        <form action="{{ url_for('contact') }}" method="post" id="contactForm" class="contact-form frame reveal" data-reveal>
           <label>
             Name*
             <input type="text" name="name" required />
@@ -85,7 +152,7 @@
             Message*
             <textarea name="message" rows="4" required></textarea>
           </label>
-          <button type="submit" class="btn">Send Message</button>
+          <button type="submit" class="btn btn-solid">Transmit Message</button>
         </form>
       </section>
     </main>
